@@ -1,0 +1,128 @@
+/* Estilos CSS - Tema Rosa e Branco */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #fff0f5;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #333;
+}
+
+.container {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(255, 105, 180, 0.2);
+    padding: 30px;
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+}
+
+h1 {
+    color: #ff69b4;
+    margin-bottom: 25px;
+    font-size: 28px;
+}
+
+.password-display {
+    background-color: #fff9fb;
+    border: 2px dashed #ff69b4;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 20px 0;
+    font-size: 18px;
+    word-break: break-all;
+    color: #d23369;
+    font-weight: bold;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.controls {
+    margin: 25px 0;
+    text-align: left;
+}
+
+.control-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #ff69b4;
+    font-weight: bold;
+}
+
+input[type="number"], select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ffb6c1;
+    border-radius: 5px;
+    background-color: #fff9fb;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.checkbox-group input {
+    margin-right: 10px;
+    accent-color: #ff69b4;
+}
+
+.btn {
+    background-color: #ff69b4;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s;
+    margin: 5px;
+}
+
+.btn:hover {
+    background-color: #ff1493;
+    transform: translateY(-2px);
+}
+
+.btn-copy {
+    background-color: white;
+    color: #ff69b4;
+    border: 2px solid #ff69b4;
+}
+
+.btn-copy:hover {
+    background-color: #fff0f5;
+}
+
+.strength-meter {
+    height: 10px;
+    background-color: #eee;
+    border-radius: 5px;
+    margin: 15px 0;
+    overflow: hidden;
+}
+
+.strength-bar {
+    height: 100%;
+    width: 0%;
+    transition: width 0.3s;
+    background: linear-gradient(to right, #ffb6c1, #ff69b4);
+}
+
+footer {
+    margin-top: 30px;
+    color: #ff69b4;
+    font-size: 14px;
+}

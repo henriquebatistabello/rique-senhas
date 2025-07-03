@@ -1,0 +1,277 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Senhas Seguras</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Gerador de Senhas Seguras</h1>
+        
+        <div class="password-display" id="passwordDisplay">
+            Clique em "Gerar Senha" para criar uma senha
+        </div>
+        
+        <div class="btn-group">
+            <button class="btn" id="generateBtn">Gerar Senha</button>
+            <button class="btn btn-copy" id="copyBtn">Copiar</button>
+        </div>
+        
+        <div class="strength-meter">
+            <div class="strength-bar" id="strengthBar"></div>
+        </div>
+        
+        <div class="controls">
+            <div class="control-group">
+                <label for="passwordLength">Tamanho da Senha:</label>
+                <input type="number" id="passwordLength" min="6" max="50" value="12">
+            </div>
+            
+            <div class="control-group">
+                <label>Incluir:</label>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="uppercase" checked>
+                    <label for="uppercase">Letras maiúsculas (A-Z)</label>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="lowercase" checked>
+                    <label for="lowercase">Letras minúsculas (a-z)</label>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="numbers" checked>
+                    <label for="numbers">Números (0-9)</label>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="symbols" checked>
+                    <label for="symbols">Símbolos (!@#$%^&*)</label>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            Use senhas fortes para proteger suas contas online
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const passwordDisplay = document.getElementById('passwordDisplay');
+            const generateBtn = document/* Estilos CSS - Tema Rosa e Branco */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #fff0f5;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #333;
+}
+
+.container {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(255, 105, 180, 0.2);
+    padding: 30px;
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+}
+
+h1 {
+    color: #ff69b4;
+    margin-bottom: 25px;
+    font-size: 28px;
+}
+
+.password-display {
+    background-color: #fff9fb;
+    border: 2px dashed #ff69b4;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 20px 0;
+    font-size: 18px;
+    word-break: break-all;
+    color: #d23369;
+    font-weight: bold;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.controls {
+    margin: 25px 0;
+    text-align: left;
+}
+
+.control-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #ff69b4;
+    font-weight: bold;
+}
+
+input[type="number"], select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ffb6c1;
+    border-radius: 5px;
+    background-color: #fff9fb;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.checkbox-group input {
+    margin-right: 10px;
+    accent-color: #ff69b4;
+}
+
+.btn {
+    background-color: #ff69b4;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s;
+    margin: 5px;
+}
+
+.btn:hover {
+    background-color: #ff1493;
+    transform: translateY(-2px);
+}
+
+.btn-copy {
+    background-color: white;
+    color: #ff69b4;
+    border: 2px solid #ff69b4;
+}
+
+.btn-copy:hover {
+    background-color: #fff0f5;
+}
+
+.strength-meter {
+    height: 10px;
+    background-color: #eee;
+    border-radius: 5px;
+    margin: 15px 0;
+    overflow: hidden;
+}
+
+.strength-bar {
+    height: 100%;
+    width: 0%;
+    transition: width 0.3s;
+    background: linear-gradient(to right, #ffb6c1, #ff69b4);
+}
+
+footer {
+    margin-top: 30px;
+    color: #ff69b4;
+    font-size: 14px;
+}.getElementById('generateBtn');
+            const copyBtn = document.getElementById('copyBtn');
+            const passwordLength = document.getElementById('passwordLength');
+            const uppercase = document.getElementById('uppercase');
+            const lowercase = document.getElementById('lowercase');
+            const numbers = document.getElementById('numbers');
+            const symbols = document.getElementById('symbols');
+            const strengthBar = document.getElementById('strengthBar');
+            
+            // Caracteres possíveis
+            const upperChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            const lowerChars = 'abcdefghijklmnopqrstuvwxyz';
+            const numberChars = '0123456789';
+            const symbolChars = '!@#$%^&*()_+~`|}{[]\\:;?><,./-=';
+            
+            generateBtn.addEventListener('click', generatePassword);
+            copyBtn.addEventListener('click', copyPassword);
+            
+            function generatePassword() {
+                let chars = '';
+                let generatedPassword = '';
+                
+                if (uppercase.checked) chars += upperChars;
+                if (lowercase.checked) chars += lowerChars;
+                if (numbers.checked) chars += numberChars;
+                if (symbols.checked) chars += symbolChars;
+                
+                if (chars === '') {
+                    passwordDisplay.textContent = 'Selecione pelo menos um tipo de caractere';
+                    return;
+                }
+                
+                for (let i = 0; i < passwordLength.value; i++) {
+                    const randomIndex = Math.floor(Math.random() * chars.length);
+                    generatedPassword += chars[randomIndex];
+                }
+                
+                passwordDisplay.textContent = generatedPassword;
+                updateStrengthMeter(generatedPassword);
+            }
+            
+            function copyPassword() {
+                const password = passwordDisplay.textContent;
+                
+                if (password && password !== 'Clique em "Gerar Senha" para criar uma senha') {
+                    navigator.clipboard.writeText(password)
+                        .then(() => {
+                            const originalText = copyBtn.textContent;
+                            copyBtn.textContent = 'Copiado!';
+                            setTimeout(() => {
+                                copyBtn.textContent = originalText;
+                            }, 2000);
+                        })
+                        .catch(err => {
+                            console.error('Erro ao copiar: ', err);
+                        });
+                }
+            }
+            
+            function updateStrengthMeter(password) {
+                let strength = 0;
+                
+                // Verifica o comprimento
+                if (password.length >= 12) strength += 2;
+                else if (password.length >= 8) strength += 1;
+                
+                // Verifica tipos de caracteres
+                if (/[A-Z]/.test(password)) strength += 1;
+                if (/[a-z]/.test(password)) strength += 1;
+                if (/[0-9]/.test(password)) strength += 1;
+                if (/[^A-Za-z0-9]/.test(password)) strength += 2;
+                
+                // Atualiza a barra de força
+                const width = (strength / 7) * 100;
+                strengthBar.style.width = width + '%';
+                
+                // Muda a cor baseada na força
+                if (width < 30) {
+                    strengthBar.style.background = '#ffb6c1';
+                } else if (width < 70) {
+                    strengthBar.style.background = 'linear-gradient(to right, #ffb6c1, #ff69b4)';
+                } else {
+                    strengthBar.style.background = 'linear-gradient(to right, #ff69b4, #d23369)';
+                }
+            }
+        });
+    </script>
+</body>
+</html>
